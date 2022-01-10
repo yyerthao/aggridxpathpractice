@@ -15,25 +15,28 @@ Then(/^I click on dropdown menu: "([^"]*)"$/) do |theme|
   sleep 2
 end
 
-Then(/^I click on first row named "([^"]*)" holding "([^"]*)" key$/) do |columnName, key|
+Then('I click on the column header') do
   key = :command
   sleep 2
-  page.find(:xpath, ".//div[contains(@role, 'columnheader') and (@aria-colindex='1')]//span[contains(text(), '#{columnName}')]").click(key)
+  page.find(:xpath, ".//div[contains(@class, 'ag-header-cell')]/parent::div[contains(@class, 'ag-header-row-column') and (@aria-rowindex='2')]").click
+  # the below line is the original, KEEP !
+  # page.find(:xpath, ".//div[contains(@role, 'columnheader') and (@aria-colindex='1')]//span[contains(text(), '#{columnName}')]").click(key)
   sleep 2
-
 end
 
 
-Then('I click on {string} arrow key until I see {string} column') do |key, columnName|
+Then('I click on right arrow key until I see {string} column') do |columnName|
   key = :right
-  # allColumns = ".//div[contains(@class, 'ag-cell-label-container')]"
     sleep 2
   until columnName
     sleep 2
-    page.find(:xpath, ".//div[contains(@class, 'ag-cell-label-container')]", wait: 5).click(key)
+    page.find(:xpath, ".//div[contains(@class, 'ag-header-cell')]/parent::div[contains(@class, 'ag-header-row-column') and (@aria-rowindex='2')]").click(key)
     sleep 2
   end
-  sleep 2
+  sleep 5
 end
+
+
+
 
 
