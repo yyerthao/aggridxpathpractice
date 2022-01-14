@@ -1,0 +1,5 @@
+# ----------------- Xpath Collection -----------------
+
+Netflix:
+  input: ".//label[contains(text(), 'LABEL_NAME')]/preceding-sibling::input"
+  "

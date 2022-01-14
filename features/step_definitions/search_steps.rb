@@ -1,5 +1,5 @@
 
-Given('I visit https:\/\/www.youtube.com') do
+Given(/^I visit Youtube$/) do
   visit('https://www.youtube.com')
   sleep 2
 end
